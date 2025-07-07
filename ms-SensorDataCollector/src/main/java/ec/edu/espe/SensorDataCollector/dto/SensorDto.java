@@ -1,0 +1,18 @@
+package ec.edu.espe.SensorDataCollector.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class SensorDto {
+
+    private String sensorId;
+    private String type;
+    private double value;
+    private LocalDateTime timestamp;
+}
