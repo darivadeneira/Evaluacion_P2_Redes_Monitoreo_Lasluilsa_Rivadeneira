@@ -15,6 +15,7 @@
         <module>ms-eureka-server</module>
         <module>ms-api-gateway</module>
         <module>ms-EnvironmentalAnalyzer</module>
+        <module>ms-notificaciones</module>
     </modules>
 
 </project>
