@@ -8,25 +8,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/sensor-readings")
+@RequestMapping("/api/sensor")
 public class SensorController {
 
     @Autowired
     private SensorService sensorService;
 
-    @PostMapping
-    public ResponseDto crearDatosSensor(@RequestBody Sensor dato) {
-        return sensorService.crarDatosSensor(new SensorDto(
-                dato.getSensorId(),
-                dato.getType(),
-                dato.getValue(),
-                dato.getTimestamp()
-        ));
+    @GetMapping("/{sensorId}")
+    public Sensor getSensorData(String sensorId) {
+        return sensorService.getSensorData(sensorId);
     }
 
-    @GetMapping("/{sensorId}")
-    public ResponseDto listarDatosUnSensor(@PathVariable String sensorId) {
-        return sensorService.listarDatosUnSensor(sensorId);
+    @PostMapping
+    public ResponseDto createSensor(@RequestBody SensorDto sensor) {
+        return sensorService.createSensor(sensor);
     }
 
 }

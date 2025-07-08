@@ -1,10 +1,11 @@
 package ec.edu.espe.SensorDataCollector.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -12,11 +13,12 @@ import java.time.LocalDateTime;
 public class Sensor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long eventId;
-
+    @Column(unique = true)
     private String sensorId;
-    private String type;
-    private double value;
-    private LocalDateTime timestamp;
+
+    private String sensorName;
+
+    @OneToMany(mappedBy = "sensor")
+    @JsonIgnore
+    private List<SensorData> sensorDataList;
 }

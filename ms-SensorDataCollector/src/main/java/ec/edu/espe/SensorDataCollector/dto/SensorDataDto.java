@@ -4,11 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SensorDto {
+public class SensorDataDto {
 
     private String sensorId;
-    private String sensorName;
+    private String type;
+    private double value;
+    private LocalDateTime timestamp;
 }
