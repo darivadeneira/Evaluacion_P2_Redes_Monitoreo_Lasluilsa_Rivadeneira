@@ -19,6 +19,12 @@ spring:
                 - Path=/api/sensor-readings/**
               filters:
                 - StripPrefix=0
+            - id: ms-notificaciones
+              uri: lb://SERVICIO-NOTIFICACIONES
+              predicates:
+                - Path=/notificaciones/**
+              filters:
+                - StripPrefix=0
 eureka:
     client:
       service-url:

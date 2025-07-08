@@ -6,8 +6,6 @@ import ec.edu.espe.EnvironmentalAnalyzer.repository.AlertRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
-
 @Service
 public class AlertService {
 
@@ -18,11 +16,10 @@ public class AlertService {
     Double umbralHumedad = 20.0;
     Double umbralSismica = 3.0;
 
-    boolean triggered = false;
-    String alertType = "";
-    double threshold = 0;
-
     public void analizarRegistro(NewSensorReadingDto dto) {
+        boolean triggered = false;
+        String alertType = "";
+        double threshold = 0;
 
         switch (dto.type.toLowerCase()) {
             case "temperature":

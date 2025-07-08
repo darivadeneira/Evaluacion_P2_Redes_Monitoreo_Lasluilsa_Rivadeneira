@@ -36,7 +36,7 @@ public class SensorDataService {
 
         SensorData savedSensorData = sensorDataRepository.save(sensorData);
 
-        producer.enviarNotificacion(savedSensorData, "nuevo-sensor");
+        producer.enviarNotificacion(dato, "nuevo-sensor");
 
         return new ResponseDto("Datos del sensor guardados correctamente", savedSensorData);
 

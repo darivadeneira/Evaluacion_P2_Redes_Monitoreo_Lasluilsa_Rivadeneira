@@ -1,6 +1,6 @@
 spring:
   application:
-    name: servicio-notificaciones
+    name: SERVICIO-NOTIFICACIONES
   datasource:
     url: jdbc:postgresql://localhost:26357/notificaciones_db?user=root&password=
     username: root
