@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AlertaDto {
-    public String alertId;
+    public Long alertId;
     public String type;
     public String sensorId;
     public double value;

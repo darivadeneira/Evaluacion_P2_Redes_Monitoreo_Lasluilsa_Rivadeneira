@@ -1,5 +1,6 @@
 package ec.edu.espe.EnvironmentalAnalyzer.service;
 
+import ec.edu.espe.EnvironmentalAnalyzer.dto.AlertaDto;
 import ec.edu.espe.EnvironmentalAnalyzer.dto.NewSensorReadingDto;
 import ec.edu.espe.EnvironmentalAnalyzer.model.Alert;
 import ec.edu.espe.EnvironmentalAnalyzer.repository.AlertRepository;
@@ -11,6 +12,9 @@ public class AlertService {
 
     @Autowired
     private AlertRepository alertRepository;
+
+    @Autowired
+    private NotificacionProducer notificacionProducer;
 
     Double umbralTemperatura = 40.0;
     Double umbralHumedad = 20.0;
@@ -52,7 +56,16 @@ public class AlertService {
             alert.setValue(dto.value);
             alert.setThreshold(threshold);
             alert.setTimestamp(dto.timestamp);
-            alertRepository.save(alert);
+            Alert alertaDB = alertRepository.save(alert);
+
+            AlertaDto alertaDto = new AlertaDto();
+            alertaDto.setAlertId(alertaDB.getAlertId());
+            alertaDto.setType(alertType);
+            alertaDto.setSensorId(alertaDto.getSensorId());
+            alertaDto.setValue(alertaDto.value);
+            alertaDto.setThreshold(threshold);
+            alertaDto.setTimestamp(dto.timestamp);
+            notificacionProducer.enviarNotificacion(alertaDto);
         }
 
     }

@@ -16,7 +16,7 @@ public class NotificacionListener {
     @Autowired
     private ObjectMapper objectMapper;
 
-    @RabbitListener(queues = "alertas.cola")
+    @RabbitListener(queues = "notificacion.cola")
     public void recibirNotificacion(String mensajeJson) {
         try {
             AlertaDto dto = objectMapper.readValue(mensajeJson, AlertaDto.class);
