@@ -9,19 +9,19 @@ import org.springframework.scheduling.annotation.Scheduled;
 @EnableScheduling
 public class SchedulingConfig {
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 86400000)
     public void reporteDiario() {
         try {
-            System.out.println("Nodo: ms-catalogo -> Enviando hora");
+            System.out.println("Reporte Diario");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 21600000)
     public void sensoresInactivos() {
         try {
-            System.out.println("Nodo: ms-catalogo -> Enviando hora");
+            System.out.println("Sensores Inactivos");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
