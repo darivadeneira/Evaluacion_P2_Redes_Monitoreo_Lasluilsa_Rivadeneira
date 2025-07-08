@@ -16,13 +16,13 @@ spring:
             - id: ms-SensorDataCollector
               uri: lb://SERVICIO-SENSOR
               predicates:
-                - Path=/api/sensor-readings/**
+                - Path=/api/conjunta/2p/api/sensor-readings/**
               filters:
                 - StripPrefix=0
             - id: ms-notificaciones
               uri: lb://SERVICIO-NOTIFICACIONES
               predicates:
-                - Path=/notificaciones/**
+                - Path=/api/conjunta/2p/notificaciones/**
               filters:
                 - StripPrefix=0
 eureka:

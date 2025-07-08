@@ -24,4 +24,9 @@ public class SensorController {
         return sensorService.createSensor(sensor);
     }
 
+    @GetMapping("/inactive")
+    public ResponseDto getInactiveSensorsInLast24Hours() {
+        return sensorService.getInactiveSensorsInLast24Hours();
+    }
+
 }

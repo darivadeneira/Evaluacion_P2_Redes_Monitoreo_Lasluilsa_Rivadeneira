@@ -23,4 +23,9 @@ public class SensorDataController {
         return sensorDataService.listarDatosUnSensor(sensorId);
     }
 
+    @GetMapping("/hours")
+    public ResponseDto listarDatosUltimasHoras() {
+        return sensorDataService.getLast24HoursData();
+    }
+
 }

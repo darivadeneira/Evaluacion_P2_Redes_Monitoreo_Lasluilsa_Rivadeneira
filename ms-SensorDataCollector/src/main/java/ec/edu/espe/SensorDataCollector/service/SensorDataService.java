@@ -9,6 +9,7 @@ import ec.edu.espe.SensorDataCollector.repository.SensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,6 +19,8 @@ public class SensorDataService {
     @Autowired
     private NotificacionProducer producer;
 
+    @Autowired
+    private ReportTypeProducer reportTypeProducer;
 
     @Autowired
     private SensorDataRepository sensorDataRepository;
@@ -64,5 +67,12 @@ public class SensorDataService {
                 .collect(Collectors.toList());
 
         return new ResponseDto("Datos del sensor obtenidos correctamente", sensorDataDtos);
+    }
+
+    public ResponseDto getLast24HoursData() {
+        LocalDateTime startTime = LocalDateTime.now().minusHours(24);
+        List<SensorData> sensorDataList = sensorDataRepository.findAllByTimestampAfter(startTime);
+        reportTypeProducer.sendDailyReport(sensorDataList);
+        return new ResponseDto("Registros de las últimas 24 horas obtenidos correctamente", sensorDataList);
     }
 }
